@@ -4,7 +4,8 @@
 
 Just run it on AWS until we decide to fill this section properly :P
 
-* Follow [this] up to step 3 if you don't have an SSH key (https://help.github.com/articles/connecting-to-github-with-ssh/)
+* Follow [this](https://help.github.com/articles/connecting-to-github-with-ssh/)
+up to step 3 if you don't have an SSH key 
 
 ## Dependencies (not comprehensive)
 
