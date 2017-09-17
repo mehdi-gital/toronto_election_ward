@@ -18,11 +18,12 @@ db = client.Main
 
 class MyStreamListener(StreamListener):
     def on_data(self, data):
-        print(data)
         insert_item = json.loads(data)
+        print(insert_item['text'])
         result = db.tweets.insert_one(insert_item)
         print('Successfully inserted with result: ')
         print(result)
+        print()
 
 
 listener = MyStreamListener()
