@@ -18,7 +18,8 @@ access_token_secret = "EJVEh5vgDvmomVwL4s9Dnp91O4GxOh3GqIMZ0FxmzCO3d"
 
 #client = MongoClient('127.0.0.1:27017')
 #db = client.Main
-conn = psycopg2.connect('dbname=election_ward user=postgres')
+conn = psycopg2.connect('dbname=tweets user=mkoo21 password=W9vLXBmlixHWufrx host=martin-election-ward-db.cgdaezyal8oh.us-east-2.rds.amazonaws.com')
+#conn = psycopg2.connect('dbname=election_ward user=postgres')
 cur = conn.cursor()
 
 def process_tweet(tweet):
@@ -50,17 +51,16 @@ def process_tweet(tweet):
             VALUES (%s, %s, %s, %s)',
             (tweet_dict['id'], datetime.strptime(tweet_dict['created_at'], '%a %b %d %H:%M:%S %z %Y'), tweet_dict['text'], user_dict['id']))
 
-
     #Insert hashtags
     #cur.execute('INSERT INTO Hashtags
     #        (text,
     #        tweet_id)
     #        VALUES (%s, %s)',
     #        tweet_dict)
+    conn.commit()
     print(tweet_dict['text'])
     print('Successfully inserted tweet')
     
-
 class MyStreamListener(StreamListener):
     def on_data(self, data):
         #insert_item = json.loads(data)
@@ -68,11 +68,12 @@ class MyStreamListener(StreamListener):
         process_tweet(data)
         print()
 
-
 listener = MyStreamListener()
 auth = OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 
 stream = Stream(auth, listener)
-stream.filter(track=['Toronto'])
+#stream.filter(track=['Toronto'])
+
+stream.filter(track=['anabailaoTO', 'Campbell4Ward4', 'CarmichaelGreb', 'cllrainslie', 'CllrCrawford', 'DenzilMW', 'DoucetteWard13', 'DoucetteWard13', 'FDiGiorgio12', 'FrancesNunziata', 'gordperks', 'hollandmichelle', 'JamesPasternak', 'Janet_Davis', 'JayeRobinson', 'jimkarygiannis', 'joe_cressy', 'joemihevc', 'JohnTory', 'jon_burnside', 'JoshColle', 'JoshMatlow', 'JustinDiCiano', 'kristynwongtam', 'LeeChin8', 'mammolitiward7', 'MariaAugimeri', 'Mark_Grimes', 'mary_margaret32', 'mfragedakis', 'MichaelFordTO', 'm_layton', 'mthompson201', 'NeethanShan', 'norm', 'PaulaFletcher30', 'PerruzzaTO', 'shelleycarroll', 'stephenholyday', 'vcrisanti', 'Ward44_Updates'])
 
