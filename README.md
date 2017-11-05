@@ -41,7 +41,7 @@ Here are a few immediately obvious coding tasks that would benefit us. There is 
 
 Contributions are welcome, even if they are very small. 
 
-* Process hashtags and add them to a separate table
+* Process hashtags and add them to a separate table (the relevant twitter objects are listed [here](http://electionward.pbworks.com/w/page/121079715/Relevant%20Twitter%20Keys))
 * Detect retweets; if the retweet doesn't exist in the database, add it. Otherwise increment some `retweet_count` column on the original tweet instead of adding an entire new tweet.
 * Add an easy way to dump data to files that can be downloaded?
 * Improve documentation
