@@ -29,9 +29,11 @@ up to step 3 if you don't have an SSH key
 ## Troubleshooting
 Coming soon...
 
-## Tasks (maybe not necessary but would be nice to have)
+## Tasks (maybe not necessary but at least be nice to have)
 
 * Process hashtags and add them to a separate table
 * Detect retweets; if the retweet doesn't exist in the database, add it. Otherwise increment some `retweet_count` column on the original tweet instead of adding an entire new tweet.
 * Add installation instructions
+* Add an easy way to dump data to files that can be downloaded?
 * Teach me SQLAlchemy
+

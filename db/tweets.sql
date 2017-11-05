@@ -16,7 +16,7 @@ CREATE TABLE Users (
 CREATE TABLE Tweets (
     id bigint PRIMARY KEY,
     created_at timestamptz,
-    text VARCHAR(140),
+    text VARCHAR(255),
     user_id bigint,
     FOREIGN KEY (user_id) REFERENCES Users (user_id),
     retweet_count integer
