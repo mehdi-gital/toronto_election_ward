@@ -7,6 +7,7 @@ from datetime import datetime
 #from pymongo import MongoClient #For mongo
 import pdb
 import psycopg2 #postgres
+import time
 import json
 
 #keys
@@ -75,5 +76,12 @@ auth.set_access_token(access_token, access_token_secret)
 stream = Stream(auth, listener)
 #stream.filter(track=['Toronto'])
 
-stream.filter(track=['anabailaoTO', 'Campbell4Ward4', 'CarmichaelGreb', 'cllrainslie', 'CllrCrawford', 'DenzilMW', 'DoucetteWard13', 'DoucetteWard13', 'FDiGiorgio12', 'FrancesNunziata', 'gordperks', 'hollandmichelle', 'JamesPasternak', 'Janet_Davis', 'JayeRobinson', 'jimkarygiannis', 'joe_cressy', 'joemihevc', 'JohnTory', 'jon_burnside', 'JoshColle', 'JoshMatlow', 'JustinDiCiano', 'kristynwongtam', 'LeeChin8', 'mammolitiward7', 'MariaAugimeri', 'Mark_Grimes', 'mary_margaret32', 'mfragedakis', 'MichaelFordTO', 'm_layton', 'mthompson201', 'NeethanShan', 'norm', 'PaulaFletcher30', 'PerruzzaTO', 'shelleycarrolSl', 'stephenholyday', 'vcrisanti', 'Ward44_Updates', 'Etobicoke North', 'Etobicoke Centre', 'Etobicoke-Lakeshore', 'York West', 'York Centre', 'York South-Weston', 'High Park', 'Parkdale', 'Eglinton-Lawrence', 'Davenport', 'Trinity-Spadina', 'St. Paul\'s', 'Willowdale', 'Don Valley West', 'Toronto Centre Rosedale', 'Toronto-Danforth', 'Beaches-East York', 'Don Valley East', 'Scarborough Southwest', 'Scarborough Centre', 'Scarborough-Agincourt', 'Scarborough-Rouge River', 'Scarborough East'])
-
+while True:
+    try:
+        stream.filter(track=['anabailaoTO', 'Campbell4Ward4', 'CarmichaelGreb', 'cllrainslie', 'CllrCrawford', 'DenzilMW', 'DoucetteWard13', 'DoucetteWard13', 'FDiGiorgio12', 'FrancesNunziata', 'gordperks', 'hollandmichelle', 'JamesPasternak', 'Janet_Davis', 'JayeRobinson', 'jimkarygiannis', 'joe_cressy', 'joemihevc', 'JohnTory', 'jon_burnside', 'JoshColle', 'JoshMatlow', 'JustinDiCiano', 'kristynwongtam', 'LeeChin8', 'mammolitiward7', 'MariaAugimeri', 'Mark_Grimes', 'mary_margaret32', 'mfragedakis', 'MichaelFordTO', 'm_layton', 'mthompson201', 'NeethanShan', 'norm', 'PaulaFletcher30', 'PerruzzaTO', 'shelleycarrolSl', 'stephenholyday', 'vcrisanti', 'Ward44_Updates', 'Etobicoke North', 'Etobicoke Centre', 'Etobicoke-Lakeshore', 'York West', 'York Centre', 'York South-Weston', 'Parkdale-High Park', 'Parkdale', 'Eglinton-Lawrence', 'Davenport', 'Trinity-Spadina', 'St. Paul\'s', 'Willowdale', 'Don Valley West', 'Toronto Centre Rosedale', 'Toronto-Danforth', 'Beaches-East York', 'Don Valley East', 'Scarborough Southwest', 'Scarborough Centre', 'Scarborough-Agincourt', 'Scarborough-Rouge River', 'Scarborough East'])
+    except ConnectionResetError:
+        time.sleep(5)
+        continue
+    except psycopg2.DataError:
+        continue
+    break
